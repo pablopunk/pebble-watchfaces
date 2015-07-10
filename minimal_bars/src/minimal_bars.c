@@ -8,6 +8,7 @@ static TextLayer* hours_text_layer;
 static int hours;
 static TextLayer* minutes_text_layer;
 static int minutes;
+static int isIn24hrMode = 0;
 
 static void main_window_load(Window *window) {
 
@@ -58,9 +59,11 @@ static void update_time() {
   if(clock_is_24h_style() == true) {
     // Use 24 hour format
     strftime(h, sizeof("00"), "%H", tick_time);
+    isIn24hrMode = 1;
   } else {
     // Use 12 hour format
     strftime(h, sizeof("00"), "%I", tick_time);
+    isIn24hrMode = 0;
   }
 
   hours   = atoi(h); // update global time
@@ -74,7 +77,7 @@ static void update_time() {
 static void update_bars(Layer *this_layer, GContext *ctx) {
   // hours
   graphics_context_set_fill_color(ctx, GColorMediumSpringGreen);
-  graphics_fill_rect(ctx, GRect(0, 0, (144/24)*hours, 84), 0, GCornerNone);
+  graphics_fill_rect(ctx, GRect(0, 0, (144/ (12+(isIn24hrMode*12)))*hours, 84), 0, GCornerNone);
   // minutes
   graphics_context_set_fill_color(ctx, GColorVividCerulean);
   graphics_fill_rect(ctx, GRect(0, 84, (144/60)*minutes, 84), 0, GCornerNone);
