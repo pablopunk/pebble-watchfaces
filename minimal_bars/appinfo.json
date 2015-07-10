@@ -1,0 +1,21 @@
+{
+  "uuid": "b5966896-3304-4607-a27e-24aa33b1de73",
+  "shortName": "Minimal",
+  "longName": "Minimal Bars Face",
+  "companyName": "Pablo Varela",
+  "versionCode": 1,
+  "versionLabel": "1.0",
+  "watchapp": {
+    "watchface": true
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": []
+  },
+  "targetPlatforms": [
+    "basalt"
+  ],
+  "sdkVersion": "3"
+}
